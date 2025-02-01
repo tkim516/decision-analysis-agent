@@ -1,0 +1,321 @@
+questionId,questionText,answerText,excelFileName
+3.24,"Figure 3.32 shows a decision tree with cash flows and probabilities fully specified. This is a research-and-development decision. The decision maker is a company that must decide whether to spend $2 million to continue with a particular research project. The success of the project (as measured by obtain- ing a patent) is not assured, and at this point the decision maker judges only a 70% chance of getting the patent. If the patent is awarded, the company can either license the patent for an estimated $25 million or invest an addi- tional $10 million to create a production and marketing system to sell the product directly. If the company chooses the latter, it faces uncertainty of demand and associated profit from sales.
+You can see in Figure 3.32 that the probabilities at each chance node add up to 1. Also, the dollar values at the ends of the branches are the net values. For example, if the company continues development, obtains a patent, decides to sell the product directly, and enjoys a high level of demand, the net amount is $43 million = (−2) + (−10) + $55 million. Also, note that cash flows can occur anywhere in the tree, either as the result of a specific choice made or because of a particular chance outcome.  Reconsider the research-and-development decision in Figure 3.32. If you decide to continue the project, you will have to come up with the $2 million this year (Year 1). Then there will be a year of wait- ing (Year 2) before you know if the patent is granted. If you decide to license the technology, you would receive the $25 million distrib- uted as $5 million per year beginning in Year 3. On the other hand, if you decide to sell the product directly, you will have to invest $5 million in each of Years 3 and 4 (to make up the total investment of $10 million). Your net proceeds from selling the product, then, would be evenly distributed over Years 5 through 9.
+Assuming an interest rate of 15%, calculate the NPV at the end of each branch of the decision tree."," This is a straightforward calculation of NPV. Assuming that all the cash flows happen at the end of
+the year, the following table shows the cash flows:
+Cash Stop Continue Continue Continue Continue Continue
+Flows No Patent Patent Patent Patent Patent
+License Develop Develop Develop
+Year Dem. High Dem. Med Dem. Low
+0 0 0 0 0 0 0
+1 0 -2 -2 -2 -2 -2
+2 0 0 0 0 0 0
+3 0 0 5 -5 -5 -5
+4 0 0 5 -5 -5 -5
+5 0 0 5 11 6.6 3
+6 0 0 5 11 6.6 3
+7 0 0 5 11 6.6 3
+8 0 0 0 11 6.6 3
+9 0 0 0 11 6.6 3
+Present values are calculated by applying the appropriate discount rate to each cash flow; the discount rate
+is 1
+1.15i for the cash flows in year i. Finally, NPV is the sum of the present values. Also, the NPV function
+in Excel can be used for the calculations as shown in the Excel file “Problem 3.24.xls.”
+Present Stop Continue Continue Continue Continue Continue
+Values No Patent Patent Patent Patent Patent
+Discount License Develop Develop Develop
+Year Factor Dem. High Dem. Med Dem. Low
+0 1 0.00 0.00 0.00 0.00 0.00 0.00
+1 0.8696 0.00 -1.74 -1.74 -1.74 -1.74 -1.74
+2 0.7561 0.00 0.00 0.00 0.00 0.00 0.00
+3 0.6575 0.00 0.00 3.29 -3.29 -3.29 -3.29
+4 0.5718 0.00 0.00 2.86 -2.86 -2.86 -2.86
+5 0.4972 0.00 0.00 2.49 5.47 3.28 1.49
+6 0.4323 0.00 0.00 2.16 4.76 2.85 1.30
+7 0.3759 0.00 0.00 1.88 4.14 2.48 1.13
+8 0.3269 0.00 0.00 0.00 3.60 2.16 0.98
+9 0.2843 0.00 0.00 0.00 3.13 1.88 0.85
+NPV 0.00 -1.74 10.93 13.20 4.76 -2.14
+In file “Problem 3.24.xlsx”, the decision tree references the NPV calculations to demonstrate the process of
+choosing to continue or stop development. The ability to build these trees in Excel and reference cells as
+done in this problem makes this a powerful program. The payoff for each branch of the tree is a formula
+that corresponds to the correct cell in the NPV calculations worksheet.
+Alternative assumptions can be made about the timing of the cash flows. For example, it would not be
+unreasonable to believe that the expenses must be paid at the beginning of the year and that revenue arrives
+at the end of the year. The most realistic scenario, however, is that all cash flows are evenly spread out over
+the year for which they are specified.",Problem 3.24.xlsx
+3.25,"When you purchase a car, you may consider buying a brand-new car or a used one. A fundamental trade-off in this case is whether you pay repair bills (uncertain at the time you buy the car) or make loan pay- ments that are certain.
+Consider two cars, a new one that costs $15,000 and a used one with 75,000 miles for $5,500. Let us assume that your current car’s value and your available cash amount to $5,500, so you could purchase the used car outright or make a down payment of $5,500 on the new car. Your credit union is willing to give you a five-year, 10% loan on the $9,500 difference if you buy the new car; this loan will require monthly payments of $201.85 per month for 5 years. Maintenance costs are expected to be $100 for the first year and $300 per year for the second and third years.
+After taking the used car to your mechanic for an evaluation, you learn the following. First, the car needs some minor repairs within the next few months, including a new battery, work on the suspension and steering mechanism, and replacement of the belt that drives the water pump. Your mechanic has estimated that these repairs will cost $150. Considering the amount you drive, the tires will last another year but will have to be replaced next year for about $200. Beyond that, the mechanic warns you that the cooling system (radiator and hoses) may need to be repaired or replaced this year or next and that the brake system may need work. These and other repairs that an older car may require could lead you to pay anywhere from $500 to $2,500 in each of the next 3 years. If you are lucky, the repair bills will be low or will come later. But you could end up paying a lot of money when you least expect it. Draw a decision tree for this problem. To simplify it, look at the sit- uation on a yearly basis for 3 years. If you buy the new car, you can anticipate cash outflows of 12 × $201.85 = $2,422.20 plus maintenance costs. For the used car, some of the repair costs are known (immediate repairs this year, tires next year), but we must model the uncertainty associated with the rest. In addition to the known repairs, assume that in each year there is a 20% chance that these uncertain repairs will be $500, a 20% chance they will be $2,500, and a 60% chance they will be $1,500. (Hint: You need three chance nodes: one for each year!)
+To even the comparison of the two cars, we must also consider their values after 3 years. If you buy the new car, it will be worth approxi- mately $8,000, and you will still owe $4,374. Thus, its net salvage value will be $3,626. On the other hand, you would own the used car free and clear (assuming you can keep up with the repair bills!), and it would be worth approximately $2,000.
+Include all of the probabilities and cash flows (outflows until the last branch, then an inflow to represent the car’s salvage value) in your decision tree. Calculate the net values at the ends of the branches.","This decision tree is relatively complex compared to the ones that we have seen so far. Buying the
+new car does not involve any risk. However, the used car has an uncertainty each year for the next three
+years. The decision tree is shown below. Note that it is also possible to calculate the NPVs for the ends of
+the branches; the natural interest rate to use would be 10%, although it would be best to use a rate that
+reflects what you could earn in another investment. This decision tree representation does not discount the
+values. The Excel file “Problem 3.25.xlsx” contains two solutions for this problem. The workbook consists of 3
+worksheets. The first worksheet is titled Data & Formulas, and contains the input data for the problem (car
+costs, loan value, etc.) along with some formulas. The formulas in cells G29 and H29 calculate the 3-year
+net cost of the new and used car respectively. Remember to include the initial $5,500 payment. The
+formulas in M12 and L12 also calculate the 3-year net cost but incorporate the time value of money. We
+used 10% as the interest rate.
+The next two worksheets show the decision trees, with and without incorporating the time value of money.
+Both of these trees are linked trees, which we introduce in Chapter 4. There is a method for students to
+solve the problem not using linked trees, and this is explained in the text box as Option 1. Essentially,
+students will need to create 27 formulas for 3-year net cost, one for each unique combination of
+maintenance costs across the 3 years. Once these 27 formulas have been created, it is a simple matter to use
+Excel referencing to reference the end node with its corresponding formula. Assigning this problem in
+Chapter 3 will help the students realize the flexibility of linked decision trees when they encounter them in
+Chapter 4. Additional hints might be needed.
+Finally, this problem can also be used to exhibit good-modeling techniques to the students via separating
+out the data inputs and placing all of them into one area. Not only does this help with constructing the
+model, but it also facilitates running a sensitivity analysis.",Problem 3.25.xlsx
+3.27,"Jameson is a 32-year-old father of three who thought he had finally found a career. While working as an assistant manager at a local shoe store, a customer, Vijay, befriended Jameson and invited him to join his financial services firm. Excited by the new opportunity, Jameson studied, took the required exams, and became a certified financial advisor. With all the connections he had established over the years at the shoe store, Jameson started to build up a clientele. Then the credit markets froze, and his client base dried up; nobody wanted to move their assets during the down market. Luckily, Jameson had kept his position as assistant manager and now takes home $2,000 per month, but even with that, his family of five still needs an additional $400 each month to make ends meet. With bleak economic forecasts continuing through the next year and perhaps even longer, he is wondering if he should stay the course with Vijay or go back to school for a Masters of Social Work (MSW), something he has always wanted.
+Over the next year, Jameson assesses only a 20% chance that he will average $400/month as a financial advisor. His net, however, would only be $300/month, as there is a $100/month charge for Vijay’s services. He assesses a 70% chance of averaging $100/month and a 10% chance of bringing in no revenue, all the while paying Vijay for services. Jameson expects the second year to be better, with a 30% chance of averaging $600/month, a 50% chance of $400/ month, and a 20% chance of $200/month. Finally, Jameson expects dividends in the third year with a 20% chance of averaging $1,200/ month, a 70% chance of $700/month, and 10% chance of $500/ month. Vijay has indicated no change in fees for the first 3 years.
+An MSW takes 2 years to complete as a full-time student and would necessitate his taking out a student loan for $30,000. Upon graduation in 2 years, Jamison is nearly assured of a position with a 17% chance of earning $40,000 annually, 66% chance of earning $50,000 annually, or 17% chance of earning $60,000 annually. He figures his monthly loan payment would be $175 and he would pay 40% in federal and state taxes.
+Structure Jameson’s decision using a decision tree. What would you recommend he do? Why?","This problem is more challenging than some previous ones as it pushes the students to incorporate
+numerical values into the decision model, and to do so, using formulas. Also, the data were provided in two
+different formats (annual and monthly) requiring the students to pick one format for the consequence
+measure. The solution in the spreadsheet “Problem 3.27.xlsx” uses monthly values. A portion of the tree is
+shown below.
+The formula for Jameson’s monthly take home if he stays the course is
+$2,000 + (Actual Revenue – VJ’s Cost) x (1 – Tax Rate)
+Subtracting the required $2,400 is the surplus/deficit Jameson faces, and is the consequence measure we
+used.
+If the student uses the revenue values, then he or she will need to subtract $2,400 after the analysis. This
+only works because the same value is being subtracted from all end nodes. Also, students will run into
+PrecisionTree adding the values along the branches (cumulative method). For example, using monthly
+revenue values of $2,300 in year 1 and $2,400 in year 2 has a cumulative value of $4,700. In this case,
+$4,800 would need to be subtracted. Better is to use the consequence measure that fits the problem.
+The formula for Jameson’s monthly take home if he pursues an MSW in 2 years is
+(Annual salary/12) x (1 – Tax Rate) – Loan Payment
+Again, we subtracted $2,400 for the consequence measure.
+So what should Jameson do? The future looks bleak for him, but bleaker if he stays the course. Over the
+next 3 years, we see him having a monthly deficit of $570 on average if he stays the course, but only a $75
+deficit if he gets his MSW. Either way, he is falling behind every month, and expenses associated with
+raising children grow almost as fast as the children do.",Problem 3.27.xlsx
+3.28,"Susan Cooper currently works as an assistant manager at Joe’s Coffee and Tea, a national chain of over 200 coffee shops. Susan has worked at Joe’s for 4 years. Feeling that her career was stal- ling, she enrolled part time ago at a local beauty college to earn a beautician license. She was planning to leave Joe’s to attend col- lege full time, but the recession hit, and her husband, Denzel, found his job as a personal banker to be in jeopardy. If Denzel loses his job while she is attending school full time, they are con- cerned that their $10,000 in savings will run out. Without recourse to any other funds, running out of money could result in dire consequences, including eviction from their rented apartment.
+Susan and Denzel’s expenses amount to $5,000/month, of which $2,000 is rent. Susan contributes $2,000 to their monthly expenses, while Denzel contributes $3,000. Denzel believes there is a 40% chance of losing his position. If that happens, unemployment would provide $2,000 for 6 months. Denzel plans to become a mortgage bro- ker if he loses his job, and has every reason to believe that he will earn at least $3,000 per month after 6 months.
+If either Susan or Denzel is not earning income they can apply for housing assistance, which is $1,000/month for 6 months. If Susan quits and Denzel is laid off, they assess an 80% chance of obtaining the assistance. If however, only Susan is without an income, then they believe there is a 50-50 chance of assistance. If Susan does not quit, but Denzel is laid off, the probability of obtaining assistance increases a bit to 60%.
+If Susan stays at Joe’s, it will take her 18 months to finish school. If, however, she attends school full time, then she will finish in 3 months. She believes that it will take her another 3 months to build up her clien- tele to match her $2,000/month contribution.
+Structure Susan and Denzel’s decision as an influence diagram using PrecisionTree. Structure it using a decision tree using PrecisionTree. What would you recommend they do? Why?","From an income maximization point of view, Susan should not quit. There are no financial advantages
+of her quitting. As a matter of fact, the only financial ramification is the loss of 6 months of salary or $12,000.
+It could be that Susan had set her mind on quitting and cannot process not quitting based on something that
+might only happen. She is anchored to quitting, and is probably excited to start a new life.
+Susan is not as concerned with income as she is with running through their savings and being evicted. To
+model this, we consider all the different scenarios that were presented for Susan and Denzel, and for each
+calculate what would be left in their savings account. If this ever drops below zero, then they run the risk of
+eviction. The timeframe for them is clearly 6 months because both Susan and Denzel will be on their feet
+by then with their new careers.
+The solution, shown below and in the file “Problem 3.28.xlsx,” shows the structure of the problem and the
+values we used for the end nodes. To help understand the formulas, the spreadsheet cells have been named
+and thus the formulas are of the form:
+=Savings+6*(Denzel’s Contr if Laid Off + Assistance) - Six_Months_Req.
+This formula reports their end savings account balance when Denzel is laid off, when Susan is not
+contributing, and they do receive assistance. See the file for complete details. Please note that the above
+equals a negative value (-$2,000), but we are not saying the savings account balance can go negative.
+Rather, this measures by amount of their deficit.
+Susan should definitely not quit her job at the coffee shop. If she does, there is a 70% chance they will have
+at least a $2,000 deficit. Any deficit is to be avoided. If she stays working at Joes, then no matter what
+happens to Denzel, they will have at least $4,000 left in their savings account.
+To exhibit the iterative natures of modeling, we extended the model by adding a third alternative, namely,
+staying at the coffee shop for a few months. Cell E7 allows you to enter any value between 0 and 6 for the number of Months Susan stays at Joe’s Coffee. By making this a cell reference, she can dynamically
+change it value to view intermediate alternatives. For example, if she stays at Joe’s for 3 months, then the
+probability of a deficit drops to 8%.",Problem 3.28.xlsx
+4.7,References figures,"Choose B, because it costs less for exactly the same risky prospect. Choosing B is like choosing A but
+paying one less dollar.
+EMV(A) = 0.1(18) + 0.2(8) + 0.6(-2) + 0.1(-12)
+= 1.0
+EMV(B) = 0.1(19) + 0.2(9) + 0.6(-1) + 0.1(-11)
+= 1 + 0.1(18) + 0.2(8) + 0.6(-2) + 0.1(-12)
+= 1 + EMV(A)
+= 2.0
+The Excel file “Problem 4.7.xlsx” contains this decision tree. The dominance of alternative B over
+alternative A is easily seen in the Risk Profile and theCumulative Risk Profile.",Problem 4.7.xlsx
+4.13,References figures,"Reduce “Weather”:
+Take umbrella? EMV
+Take it 80
+Don’t take it p(100)
+Reducing “Take Umbrella?” means that “Take it” would be chosen if p ≤ 0.8, and “Don’t take it” would be
+chosen if p > 0.8.
+The Excel file “Problem 4.13.xlsx” contains the influence diagram for this problem. PrecisionTree allows
+you to link the probability of weather to a cell location for variable p. Thus, to consider different
+probability values, you simply need to change the value for the probability in cell J6, the location we chose
+for p.",Problem 4.13.xlsx
+5.9,"An important application of sensitivity analysis occurs in problems involving multiple attributes. Many decision makers experience difficulty in assessing trade-off weights. A sensitivity analysis of the trade-off weight, though, can reveal whether a decision maker must make a more precise judgment. Reconsider the summer-job example described and ana- lyzed in Chapter 4. In the analysis, we used trade-off weights of
+ks 1⁄4 0:60 for salary and kf 1⁄4 0:40 for fun (see Figure 4.28).
+Suppose Sam Chu is uncomfortable with the precise assessment that
+ks 1⁄4 0:60. Sam does believe, though, that ks could range from 0.50 up to 0.75. (Recall that ks and kf add up to 1, so by implication, kf can range from 0.50 to 0.25, depending on the value of ks.) Perform a sensitivity analysis on the expected overall score for the two jobs by varying ks over this range. Is the forest job preferred for all values of ks between 0.50 and 0.75?","This decision tree (shown in Figure 4.40 in the text) is modeled in the Excel file “Problem.5.9.xlsx.”
+The model is a linked tree where the uncertainty node for the amount of fun is linked to cell $F$6 in the
+spreadsheet model (“Fun Level for Forest Job”), and the uncertainty node for the amount of work is linked
+to cell $G$7 in the spreadsheet model (“Salary Level for In-town Job”). The outcome nodes for the Forest
+Job are linked to cell $F$8 and the outcome nodes for the In-Town Job to cell $G$8. The user can then vary
+the weights to see that Sam will still prefer the forest job. The sensitivity analysis gives the following
+results:
+Expected Overall Score
+ks Forest Job In-Town Job
+0.50 71.25 57.50
+0.75 76.125 56.25
+Thus, regardless of the precise value of ks, the optimal choice is the forest job. In fact, a much stronger
+statement can be made; it turns out that for no value of ks between zero and one is the in-town job
+Decision tree for
+maximizing expected
+crop value.
+Decision tree for
+minimizing
+expected loss.
+70
+preferred. Smaller values of ks favor the in-town job, but even setting ks = 0 leaves the expected overall
+scores equal to 60 and 61.5 for the in-town and forest jobs, respectively.
+Another way to show the same result is to realize that the expected overall scores are linear in the weights
+and in the expected scores for the individual attributes. Because the forest job has higher expected scores
+on both attributes, there cannot exist a set of weights that makes the in-town job have the higher overall
+expected score.",Problem 5.9.xlsx
+4.14,"A real-estate investor has the opportunity to purchase a small apartment
+complex. The apartment complex costs $4 million and is expected to gen-
+erate net revenue (net after all operating and finance costs) of $60,000 per
+month. Of course, the revenue could vary because the occupancy rate is
+uncertain. Considering the uncertainty, the revenue could vary from a low
+of −$10,000 to a high of $100,000 per month. Assume that the investor’s
+objective is to maximize the value of the investment at the end of 10 years.
+a) Do you think the investor should buy the apartment complex or invest
+the $4 million in a 10-year certificate of deposit earning 9.5%? Why?
+b) The city council is currently considering an application to rezone a
+nearby empty parcel of land. The owner of that land wants to build
+a small electronics-assembly plant. The proposed plant does not
+really conflict with the city’s overall land use plan, but it may have a
+substantial long-term negative effect on the value of the nearby resi-
+dential district in which the apartment complex is located. Because
+the city council currently is divided on the issue and will not make a
+decision until next month, the real estate investor is thinking about
+waiting until the city council makes its decision.
+A
+B
+A1
+A2
+0.55
+0.27
+0.73
+0.45
+(0.5)
+(0.5)
+$8
+$0
+$15
+$4
+$10
+$0
+FIGURE 4.44
+Generic decision
+tree for
+Exercise 4.8.
+© Cengage Learning
+164 CHAPTER 4 • Making ChoicesCopyright 2013 Cengage Learning. All Rights Reserved. May not be copied, scanned, or duplicated, in whole or in part.
+If the investor waits, what could happen? What are the trade-
+offs that the investor has to make in deciding whether to wait or to
+purchase the complex now?
+c) Suppose the investor could pay the seller $10,000 in earnest money
+now, specifying in the purchase agreement that if the council’s deci-
+sion is to approve the rezoning, the investor can forfeit the $10,000
+and forego the purchase. Draw and solve a decision tree showing
+the investor’s three options. Examine the alternatives for domi-
+nance. If you were the investor, which alternative would you
+choose? Why?","a. There is not really enough information here for a full analysis. However, we do know that the
+expected net revenue is $6000 per month. This is a lot more than the sure $3166.67 = $400,000
+× (0.095/12) in interest per month that the investor would earn in the money market.
+b. If the investor waits, someone else might buy the complex, or the seller might withdraw it from the
+market. But the investor might also find out whether the electronics plant rezoning is approved. He still will
+not know the ultimate effect on the apartment complex, but his beliefs about future income from and value
+of the complex will depend on what happens. He has to decide whether the risk of losing the complex to
+someone else if he waits is offset by the potential opportunity to make a more informed choice later.
+c. Note that the probability on the rezoning event is missing. Thus, we do not have all the information for a
+full analysis. We can draw some conclusions, though. For all intents and purposes, purchasing the option
+dominates the money-market alternative, because it appears that with the option the investor can do
+virtually as well as the money-market consequence, no matter what happens. Comparing the option with
+the immediate purchase, however, is more difficult because we do not know the precise meaning of
+“substantial long-term negative effect” on the apartment complex ’ s value. That is, this phrase does not pass
+the clarity test!
+The point of this problem is that, even with the relatively obscure information we have, we can suggest that
+the option is worth considering because it will allow him to make an informed decision. With full
+information we could mount a full-scale attack and determine which alternative has the greatest EMV.
+The structure of the tree is drawn in the Excel file “Problem 4.14.xlsx.” All the numbers necessary to do a
+complete analysis are not provided.",Problem 4.14.xlsx
+"Case Study: SS Kuniang, Part II","This case asks you to find the optimal amount
+for NEES to bid for the SS Kuniang (page 114).
+Before doing so, though, you need additional details.
+Regarding the Coast Guard’s (CG) salvage
+judgment, NEES believes that the following
+probabilities are an appropriate representation
+of its uncertainty about the salvage-value
+judgment:
+P(CG judgment = $9 million) = 0.185
+P(CG judgment = $4 million) = 0.630
+P(CG judgment = $1.5 million) = 0.185
+The obscure-but-relevant law required that NEES
+pay an amount (including both the winning bid and
+refitting cost) at least 1.5 times the salvage value for the
+ship in order to use it for domestic shipping. For
+example, if NEES bid $3.5 million and won, followed
+by a CG judgment of $4 million, then NEES would
+have to invest at least $2.5 million more: $3.5 + $2.5
+= $6 = $4 × 1.5. Thus, assuming NEES submits the
+winning bid, the total investment amount required is
+either the bid or 1.5 times the CG judgment, whichever
+is greater.
+As for the probability of submitting the highest
+bid, recall that winning is a function of the size of
+the bid; a bid of $3 million is sure to lose, and a bid
+of $10 million is sure to win. For this problem, we
+can model the probability of winning (P) as a
+linear function of the bid: P=(Bid−$3million)/
+($7 million).
+Finally, NEES’s values of $18 million for the new
+ship and $15 million for the tug-barge alternatives are
+adjusted to reflect differences in age, maintenance,
+operating costs, and so on. The two alternatives provide
+equivalent hauling capacity. Thus, at $15 million, the
+tug-barge combination appears to be the better choice.
+Questions
+1. Reasonable bids may fall anywhere between
+$3 and $10 million. Some bids, though, have
+greater expected values and some less.
+Describe a strategy you can use to find the
+optimal bid, assuming that NEES’s objective is
+to minimize the cost of acquiring additional
+shipping capacity. (Hint: This question asks
+you only to describe an approach to finding
+the optimal bid.)
+2. Use your structure of the problem (or one sup-
+plied by the instructor), with the details supplied
+previously, to find the optimal bid.","(INCLUDES VISUAL)The problem is how does one sort through all of the possible bids between $3 and $10 million to find the
+one with the lowest expected cost. One possibility is to construct a model that calculates the expected cost
+for a given bid and then search for the optimum bid by trial and error. A better approach would be to
+construct a model and use an optimization routine to find the optimum bid; for example, a spreadsheet
+model can be constructed in Microsoft Excel, and then Excel ’ s Solver can be used to find the optimum.
+This model is constructed in the Excel file “SSKuniang II.xlsx.”
+2. The details provided lead to the following decision tree:
+Bid
+amount
+Coast Guard
+judgment
+Lose bid (1-p | Bid)
+Win bid
+(p | Bid)
+$9 M (0.185)
+$4 M (0.630)
+$1.5 M (0.185)
+$15 M (Tug-barge
+Max (Bid, $13.5 M
+Max (Bid, $6 M)
+Max (Bid, $2.25 M)
+Two things are notable in the decision tree. First, the probability of submitting the winning bid, p | Bid, is
+calculated according to the formula given in the problem. (Incidentally, this way of calculating the
+probability is consistent with a belief that the highest competitive bid is uniformly distributed between $3
+and $10 million; see Problems 9.27 and 9.28). Second, there is, strictly speaking, a decision following the
+Coast Guard judgment, and that would be whether to complete fitting out the Kuniang or to go with the tug
+and barge. Because the bid will never be more than $10 million, however, the final cost after the Coast
+Guard judgment will never be more than $13.5 million, less than the $15 million for the tug and barge.
+To run the model constructed in the spreadsheet, use the built-in Solver tool to minimize the cost of the
+Decision (cell $B$6) while constraining the bid amount (cell $A$22) between $3 and $10. To run the
+Solver tool, select Solver from the Tools menu. Using this model, the optimal bid is $9.17 million with an
+expected cost of $10.57 million.",SSKuniang II.xlsx

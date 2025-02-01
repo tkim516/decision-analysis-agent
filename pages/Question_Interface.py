@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_pdf_viewer import pdf_viewer
 import functions.research_helper as lch
-from functions.check_api import check_openai_api_key
+from check_api import check_openai_api_key
 from io import BytesIO
 from functions.generate_unique_id import generate_unique_id
 import time
