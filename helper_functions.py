@@ -15,6 +15,7 @@ import pandas as pd
 from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 
+
 def initialize_vector_store():
     embeddings = OpenAIEmbeddings(
         model="text-embedding-3-large",
@@ -27,6 +28,7 @@ def initialize_vector_store():
     vector_store = PineconeVectorStore(embedding=embeddings, index=index)
    
     return vector_store
+
 
 def add_problem_embeddings(question_text: str, question_id: str, vector_store):
 
@@ -54,9 +56,7 @@ def add_problem_embeddings(question_text: str, question_id: str, vector_store):
     _ = vector_store.add_documents(documents=documents)
 
 
-
-
-def search_similar_questions(target_question: str, vector_store, k=1):
+def retrieve_similar_questions(target_question: str, vector_store, k=1):
     retrieved_docs = vector_store.similarity_search(target_question, k=k)
     
     # Build a list of results, each with question_id and content
@@ -69,15 +69,12 @@ def search_similar_questions(target_question: str, vector_store, k=1):
     return similar_question_id, similar_question_text
 
 
-
 def get_answer_text(question_id: str, question_set):
     answer_text = question_set[question_set['questionId'] == question_id]['answerText'].values[0]
     return answer_text
 
 
-
-
-def get_excel_data(question_id: str, question_set):
+def parse_excel_data(question_id: str, question_set):
     excel_file_name = question_set[question_set['questionId'] == question_id]['excelFileName'].values[0]
     
     # Load the workbook
@@ -105,8 +102,7 @@ def get_excel_data(question_id: str, question_set):
     return data
 
 
-
-def summarize_excel_logic(similar_question_text: str, answer_text: str, excel_data: list, llm):
+def extract_excel_logic(similar_question_text: str, answer_text: str, excel_data: list, llm):
 
     prompt = PromptTemplate(
     input_variables=[
@@ -115,13 +111,13 @@ def summarize_excel_logic(similar_question_text: str, answer_text: str, excel_da
         'excel_data'],
 
     template="""
-    You are an assistant that summarizes the logic in Excel that is used to solve decision analysis problems.
+    You are an assistant that extracts the logic in Excel that is used to solve decision analysis problems.
 
     Here is the question: {similar_question_text}
 
-    Here is a list of lists which represents the Excel model which is used to solve the above question: {excel_data}
+    Here is a list of lists which represents the Excel model used to solve the above question: {excel_data}
 
-    Here is a explanation to the answer: {answer_text}
+    Here is an explanation of the answer: {answer_text}
 
     Please explain the logic used to solve this problem. Also, give instructions for how another LLM can use this logic to solve similar problems.
     """
@@ -135,7 +131,6 @@ def summarize_excel_logic(similar_question_text: str, answer_text: str, excel_da
     response = llm.invoke(message)
 
     return response
-
 
 
 def solve_problem(target_question: str, logic_instructions, llm):
@@ -161,4 +156,3 @@ def solve_problem(target_question: str, logic_instructions, llm):
     response = llm.invoke(message)
 
     return response
-

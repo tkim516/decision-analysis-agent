@@ -2,10 +2,10 @@ import pandas as pd
 from langchain_openai import ChatOpenAI
 from helper_functions import (
     initialize_vector_store,
-    search_similar_questions,
+    retrieve_similar_questions,
     get_answer_text,
-    get_excel_data,
-    summarize_excel_logic,
+    parse_excel_data,
+    extract_excel_logic,
     solve_problem
 )
 
@@ -64,13 +64,13 @@ Use your decision tree to compare the expected net values of buying the new lapt
 Consider whether the old laptop’s higher repair uncertainty outweighs the certain but steady loan payment for the new one.
 """
 
-similar_question_id, similar_question_text = search_similar_questions(target_question, vector_store)
+similar_question_id, similar_question_text = retrieve_similar_questions(target_question, vector_store)
 
 answer_text = get_answer_text(similar_question_id, df)
 
-excel_data = get_excel_data(similar_question_id, df)
+excel_data = parse_excel_data(similar_question_id, df)
 
-logic_framework = summarize_excel_logic(similar_question_text, answer_text, excel_data, llm)
+logic_framework = extract_excel_logic(similar_question_text, answer_text, excel_data, llm)
 
 print(f'Question Id: {similar_question_id}')
 print(f'Question Text: {similar_question_text}')

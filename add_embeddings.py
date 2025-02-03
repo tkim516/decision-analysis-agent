@@ -4,7 +4,7 @@ from helper_functions import add_problem_embeddings, initialize_vector_store
 vector_store = initialize_vector_store()
 
 df = pd.read_csv('QuestionSet.csv')
-df_subset= df[df["questionId"].isin(["3.24", "3.27", "3.28"])]
+df_subset= df[df["questionId"].isin(["3", "3", "3"])]
 
 for index, row in df_subset.iterrows():
     question_id = row['questionId']
