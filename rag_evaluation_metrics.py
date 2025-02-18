@@ -15,3 +15,5 @@ def eval_faithfulness(target_question: str, retrieved_questions: list, target_so
   print(metric.score)
   print(metric.reason)
   print(metric.is_successful())
+
+  return metric

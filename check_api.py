@@ -1,7 +1,8 @@
 import openai
-import streamlit as st
 import time
 import os
+import streamlit as st
+
 
 def check_openai_api_key(session_state):
   if 'OPENAI_API_KEY' in os.environ:

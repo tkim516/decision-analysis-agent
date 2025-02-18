@@ -1,14 +1,38 @@
-import pandas as pd
-from helper_functions import add_problem_embeddings, initialize_vector_store
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+import fitz  # PyMuPDF
+from langchain_core.documents import Document
 
-vector_store = initialize_vector_store()
 
-df = pd.read_csv('QuestionSet.csv')
-df_subset= df[df["questionId"].isin(["3", "3", "3"])]
+answers_pdf_path = "/Users/tyler/Downloads/ML/decision-analysis-agent/textbook-answers-b.pdf"
+textbook_pdf_path = "/Users/tyler/Downloads/ML/decision-analysis-agent/textbook-b.pdf"
 
-for index, row in df_subset.iterrows():
-    question_id = row['questionId']
-    question_text = row['questionText']
+def extract_text_with_page_numbers(vector_store, pdf_path, chunk_size=1200, chunk_overlap=400):
+   
+    doc = fitz.open(pdf_path)
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=chunk_size, chunk_overlap=chunk_overlap
+    )
+
+    chunks_with_metadata = []
+
+    for page_num in range(len(doc)):
+        text = doc[page_num].get_text("text")
+        chunks = text_splitter.split_text(text)
+        
+        for chunk in chunks:
+            chunks_with_metadata.append(
+                {"text": chunk, "metadata": {"page": page_num + 1}}
+            )  # Page numbers are 1-based
+
+    # Convert dictionary chunks into Document objects
+    documents = [
+      Document(page_content=chunk["text"], metadata=chunk["metadata"])
+      for chunk in chunks_with_metadata
+    ]
+
+    # Embed and upload the text chunks
+    vector_store.add_documents(documents=documents)
     
-    add_problem_embeddings(question_text, question_id, vector_store)
-
+    doc.close()
+    
+    return chunks_with_metadata
